@@ -48,7 +48,11 @@ resource "aws_ebs_volume" "web_host_storage" {
     git_repo             = "terragoat"
     yor_trace            = "c5509daf-10f0-46af-9e03-41989212521d"
   })
+  # [Shisho]: The encryption will use AWS manged key. 
+  # You can specify a customer-managed key (CMK) with kms_key_id attribute.
+  encrypted = true
 }
+
 
 resource "aws_ebs_snapshot" "example_snapshot" {
   # ebs snapshot without encryption
